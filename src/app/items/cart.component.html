@@ -1,10 +1,10 @@
 <button (click)='getAllItems()'>Get Cart Items</button>
 
 <ul>
-    <li *ngFor="let item of list" (click)='getAllItems()'>
-        <p> {{ item.id }} </p>
-        <p> {{ item.product }} </p>
-        <p> {{ item.price }} </p>
-        <p> {{ item.quantity }} </p>
+    <li *ngFor="let item of list">
+        <span> {{ item.id }} quantity, </span>
+        <span> {{ item.product }}, </span>
+        <span> {{ item.price }}, </span>
+        <span> {{ item.quantity }} </span>
     </li>
 </ul>

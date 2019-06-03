@@ -2,11 +2,15 @@ import { Component } from '@angular/core';
 import { Api } from '../services/api.service';
 import { Router } from '@angular/router';
 
-interface ApiData {
+interface Items {
   id: string;
   product: string;
   price: string;
   quantity: string;
+}
+
+interface ApiData {
+  data: Items[];
 }
 
 @Component({
@@ -17,7 +21,7 @@ interface ApiData {
 
 export class CartComponent {
   title = 'cart-component';
-  list: ApiData[];
+  list: Items[];
   errorMessage: string;
 
   constructor(private api: Api, private router: Router) {}
@@ -27,6 +31,7 @@ export class CartComponent {
     this.api.getFact().subscribe(data => console.log(data));
     this.api.getItems().subscribe(
         (data: ApiData) => {
+          this.list = data.data;
         },
         error => {
             this.errorMessage = error.message;
